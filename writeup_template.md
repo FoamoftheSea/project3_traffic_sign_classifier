@@ -36,26 +36,36 @@ The goals / steps of this project are the following:
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](Traffic_Sign_Classifier.ipynb).
 
 ### Data Set Summary & Exploration
 
 #### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
-I used the pandas library to calculate summary statistics of the traffic
+I used the numpy library to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is 34799 images, 67.1% of the total dataset.
+* The size of the validation set is 4410 images, 8.5% of the total dataset.
+* The size of test set is 12630 images, 24.4% of the total dataset.
+* The shape of a traffic sign image is 32x32x3.
+* The number of unique classes/labels in the data set is 43.
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here are some exploratory visualizations of the training data set:
 
-![alt text][image1]
+The first is a bar chart showing how the images are distributed among the classes. The proportions were calculated using the pandas `value_counts(normalize=True)` method. These proportions were later used to generate class weights which weighted the under-represented classes more heavily in the loss.
+
+![Class distribution](images/class_distribution.png)
+
+The next image is a grid of the first 25 images in the training set. We can see that these are all duplicates of the same image, with different levels of blur and slight translation. This indicates that these types of data augmentation will not be necessary when generating batches for training.
+
+![First 25 Training Images](images/first_25_training.png)
+
+In the next image, an image from each of the classes is displayed. We can see that some of the images are so dark or blurred that a human would not be able to correctly classify them.
+
+![Class Examples](images/class_examples.png)
 
 ### Design and Test a Model Architecture
 
